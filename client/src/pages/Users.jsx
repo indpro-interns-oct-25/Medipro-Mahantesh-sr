@@ -50,18 +50,18 @@ export default function Users() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-1">Users</h1>
-          <p className="text-gray-600">Administer staff and roles</p>
+          <h1 className="text-3xl font-bold text-white mb-1">Users</h1>
+          <p className="text-slate-300">Administer staff and roles</p>
         </div>
       </div>
 
       {/* Add User Form */}
       {hasAnyRole('admin') && (
         <form onSubmit={addUser} className="card-elevated p-6 animate-slide-up">
-          <h3 className="mb-4 text-lg font-semibold text-gray-900">Create New User</h3>
+          <h3 className="mb-4 text-lg font-semibold text-white">Create New User</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Name *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Name *</label>
               <input
                 className={`input ${errors.name ? 'input-error' : ''}`}
                 placeholder="Full name"
@@ -69,10 +69,10 @@ export default function Users() {
                 onChange={(e) => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: '' }); }}
                 required
               />
-              {errors.name && <div className="mt-1.5 text-xs text-red-600">{errors.name}</div>}
+              {errors.name && <div className="mt-1.5 text-xs text-danger-300">{errors.name}</div>}
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Email *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Email *</label>
               <input
                 className={`input ${errors.email ? 'input-error' : ''}`}
                 type="email"
@@ -81,10 +81,10 @@ export default function Users() {
                 onChange={(e) => { setForm({ ...form, email: e.target.value }); setErrors({ ...errors, email: '' }); }}
                 required
               />
-              {errors.email && <div className="mt-1.5 text-xs text-red-600">{errors.email}</div>}
+              {errors.email && <div className="mt-1.5 text-xs text-danger-300">{errors.email}</div>}
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Password *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Password *</label>
               <input
                 className={`input ${errors.password ? 'input-error' : ''}`}
                 type="password"
@@ -93,10 +93,10 @@ export default function Users() {
                 onChange={(e) => { setForm({ ...form, password: e.target.value }); setErrors({ ...errors, password: '' }); }}
                 required
               />
-              {errors.password && <div className="mt-1.5 text-xs text-red-600">{errors.password}</div>}
+              {errors.password && <div className="mt-1.5 text-xs text-danger-300">{errors.password}</div>}
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Role *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Role *</label>
               <select
                 className={`input ${errors.role ? 'input-error' : ''}`}
                 value={form.role}
@@ -107,11 +107,11 @@ export default function Users() {
                 <option value="receptionist">Receptionist</option>
                 <option value="admin">Admin</option>
               </select>
-              {errors.role && <div className="mt-1.5 text-xs text-red-600">{errors.role}</div>}
+              {errors.role && <div className="mt-1.5 text-xs text-danger-300">{errors.role}</div>}
             </div>
           </div>
           {submitError && (
-            <div className="mb-4 rounded-lg bg-red-50 border border-red-200 p-3 text-sm text-red-700">
+            <div className="mb-4 rounded-lg bg-danger-500/10 border border-danger-500/30 p-3 text-sm text-danger-200">
               {submitError}
             </div>
           )}
@@ -128,8 +128,8 @@ export default function Users() {
       {loading ? (
         <div className="flex min-h-[400px] items-center justify-center">
           <div className="text-center">
-            <div className="mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4 border-primary-200 border-t-primary-600"></div>
-            <p className="text-gray-600">Loading users...</p>
+            <div className="mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4 border-night-700 border-t-primary-500"></div>
+            <p className="text-slate-400">Loading users...</p>
           </div>
         </div>
       ) : (
@@ -148,25 +148,25 @@ export default function Users() {
                 {users.length === 0 ? (
                   <tr>
                     <td colSpan={4} className="px-6 py-12 text-center">
-                      <svg className="mx-auto h-16 w-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="mx-auto h-16 w-16 text-night-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                       </svg>
-                      <p className="text-gray-500 font-medium">No users found</p>
+                      <p className="text-slate-400 font-medium">No users found</p>
                     </td>
                   </tr>
                 ) : (
                   users.map(u => (
                     <tr key={u.id}>
-                      <td className="font-mono text-xs text-gray-500">{u.id}</td>
+                      <td className="font-mono text-xs text-slate-400">{u.id}</td>
                       <td>
                         <div className="flex items-center gap-3">
-                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-primary-600 text-xs font-semibold text-white">
+                          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary-500 to-accent-500 text-xs font-semibold text-white">
                             {u.name.charAt(0).toUpperCase()}
                           </div>
-                          <span className="font-medium text-gray-900">{u.name}</span>
+                          <span className="font-medium text-white">{u.name}</span>
                         </div>
                       </td>
-                      <td className="text-gray-700">{u.email}</td>
+                      <td className="text-slate-300">{u.email}</td>
                       <td>
                         <span className={`badge ${
                           u.role === 'admin' ? 'badge-info' :

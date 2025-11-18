@@ -43,14 +43,14 @@ export default function Login({ onLoggedIn }) {
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 shadow-md">
                     <img src="/logo.svg" alt="Medicare Pro" className="h-7 w-7" />
                   </div>
-                  <h1 className="text-3xl font-bold text-gray-900">Welcome back</h1>
+                  <h1 className="text-3xl font-bold text-white">Welcome back</h1>
                 </div>
-                <p className="text-gray-600">Sign in to your account to continue</p>
+                <p className="text-slate-300">Sign in to your account to continue</p>
               </div>
 
               <form onSubmit={submit} className="space-y-5">
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-gray-700">Email</label>
+                  <label className="mb-2 block text-sm font-medium text-slate-300">Email</label>
                   <input
                     className={`input ${error ? 'input-error' : ''}`}
                     type="email"
@@ -61,7 +61,7 @@ export default function Login({ onLoggedIn }) {
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-gray-700">Password</label>
+                  <label className="mb-2 block text-sm font-medium text-slate-300">Password</label>
                   <input
                     className={`input ${error ? 'input-error' : ''}`}
                     type="password"
@@ -72,7 +72,7 @@ export default function Login({ onLoggedIn }) {
                   />
                 </div>
                 {error && (
-                  <div className="rounded-lg bg-red-50 border border-red-200 p-3 text-sm text-red-700 animate-slide-down">
+                  <div className="rounded-lg bg-danger-500/10 border border-danger-500/40 p-3 text-sm text-danger-200 animate-slide-down">
                     {error}
                   </div>
                 )}
@@ -86,7 +86,7 @@ export default function Login({ onLoggedIn }) {
             </div>
 
             {/* Right Side - Visual */}
-            <div className="hidden lg:block relative bg-gradient-to-br from-primary-600 via-primary-700 to-medical-600 overflow-hidden">
+            <div className="hidden lg:block relative bg-gradient-to-br from-night-700 via-primary-700 to-accent-700 overflow-hidden">
               <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10"></div>
               <div className="relative h-full p-10 flex flex-col justify-between">
                 <div className="mt-8">

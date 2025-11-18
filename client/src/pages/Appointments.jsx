@@ -101,8 +101,8 @@ export default function Appointments() {
     scheduled: 'badge-info',
     pending: 'badge-warning',
     completed: 'badge-success',
-    cancelled: 'bg-red-100 text-red-700',
-    in_progress: 'bg-primary-100 text-primary-800',
+    cancelled: 'bg-danger-500/15 text-danger-200 border border-danger-500/30',
+    in_progress: 'bg-accent-500/15 text-accent-200 border border-accent-500/30',
   };
 
   return (
@@ -110,18 +110,18 @@ export default function Appointments() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-1">Appointments</h1>
-          <p className="text-gray-600">Schedule and track appointments</p>
+          <h1 className="text-3xl font-bold text-white mb-1">Appointments</h1>
+          <p className="text-slate-300">Schedule and track appointments</p>
         </div>
       </div>
 
       {/* Create Appointment Form */}
       {(hasAnyRole('admin', 'receptionist')) && (
         <form onSubmit={add} className="card-elevated p-6 animate-slide-up">
-          <h3 className="mb-4 text-lg font-semibold text-gray-900">Schedule New Appointment</h3>
+          <h3 className="mb-4 text-lg font-semibold text-white">Schedule New Appointment</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Patient *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Patient *</label>
               <select 
                 className="input" 
                 value={form.patient_id} 
@@ -133,7 +133,7 @@ export default function Appointments() {
               </select>
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Date *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Date *</label>
               <input 
                 type="date" 
                 className="input"
@@ -143,7 +143,7 @@ export default function Appointments() {
               />
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Time *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Time *</label>
               <input 
                 type="time" 
                 className="input"
@@ -182,10 +182,10 @@ export default function Appointments() {
               {appointments.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-12 text-center">
-                    <svg className="mx-auto h-16 w-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="mx-auto h-16 w-16 text-night-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <p className="text-gray-500 font-medium">No appointments found</p>
+                    <p className="text-slate-400 font-medium">No appointments found</p>
                   </td>
                 </tr>
               ) : (
@@ -196,10 +196,10 @@ export default function Appointments() {
 
                   return (
                     <tr key={a.id}>
-                      <td className="font-mono text-xs text-gray-500">{a.id}</td>
-                      <td className="font-medium text-gray-900">{a.patient_name}</td>
-                      <td className="text-gray-700">{a.date?.slice(0,10)}</td>
-                      <td className="text-gray-700">{a.time}</td>
+                      <td className="font-mono text-xs text-slate-400">{a.id}</td>
+                      <td className="font-medium text-white">{a.patient_name}</td>
+                      <td className="text-slate-300">{a.date?.slice(0,10)}</td>
+                      <td className="text-slate-300">{a.time}</td>
                       <td>
                         <span className={`badge ${badgeClass}`}>
                           {label}

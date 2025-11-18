@@ -75,18 +75,18 @@ export default function Patients() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-1">Patients</h1>
-          <p className="text-gray-600">Manage and view patient profiles</p>
+          <h1 className="text-3xl font-bold text-white mb-1">Patients</h1>
+          <p className="text-slate-300">Manage and view patient profiles</p>
         </div>
       </div>
 
       {/* Add Patient Form */}
       {(hasAnyRole('admin', 'receptionist')) && (
         <form onSubmit={addPatient} className="card-elevated p-6 animate-slide-up">
-          <h3 className="mb-4 text-lg font-semibold text-gray-900">Add New Patient</h3>
+          <h3 className="mb-4 text-lg font-semibold text-white">Add New Patient</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Name *</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Name *</label>
               <input 
                 className={`input ${errors.name ? 'input-error' : ''}`}
                 placeholder="Full name" 
@@ -94,10 +94,10 @@ export default function Patients() {
                 onChange={(e) => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: '' }); }} 
                 required 
               />
-              {errors.name && <div className="mt-1.5 text-xs text-red-600">{errors.name}</div>}
+              {errors.name && <div className="mt-1.5 text-xs text-danger-300">{errors.name}</div>}
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Email</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Email</label>
               <input 
                 className={`input ${errors.email ? 'input-error' : ''}`}
                 type="email" 
@@ -105,21 +105,21 @@ export default function Patients() {
                 value={form.email} 
                 onChange={(e) => { setForm({ ...form, email: e.target.value }); setErrors({ ...errors, email: '' }); }} 
               />
-              {errors.email && <div className="mt-1.5 text-xs text-red-600">{errors.email}</div>}
+              {errors.email && <div className="mt-1.5 text-xs text-danger-300">{errors.email}</div>}
             </div>
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">Phone</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Phone</label>
               <input 
                 className={`input ${errors.phone ? 'input-error' : ''}`}
                 placeholder="Phone number" 
                 value={form.phone} 
                 onChange={(e) => { setForm({ ...form, phone: e.target.value }); setErrors({ ...errors, phone: '' }); }} 
               />
-              {errors.phone && <div className="mt-1.5 text-xs text-red-600">{errors.phone}</div>}
+              {errors.phone && <div className="mt-1.5 text-xs text-danger-300">{errors.phone}</div>}
             </div>
           </div>
           {submitError && (
-            <div className="mb-4 rounded-lg bg-red-50 border border-red-200 p-3 text-sm text-red-700">
+            <div className="mb-4 rounded-lg bg-danger-500/10 border border-danger-500/30 p-3 text-sm text-danger-200">
               {submitError}
             </div>
           )}
@@ -136,8 +136,8 @@ export default function Patients() {
       {loading ? (
         <div className="flex min-h-[400px] items-center justify-center">
           <div className="text-center">
-            <div className="mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4 border-primary-200 border-t-primary-600"></div>
-            <p className="text-gray-600">Loading patients...</p>
+            <div className="mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4 border-night-700 border-t-primary-500"></div>
+            <p className="text-slate-400">Loading patients...</p>
           </div>
         </div>
       ) : (
@@ -158,19 +158,19 @@ export default function Patients() {
                 {patients.length === 0 ? (
                   <tr>
                     <td colSpan={hasAnyRole('admin') ? 6 : 5} className="px-6 py-12 text-center">
-                      <svg className="mx-auto h-16 w-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="mx-auto h-16 w-16 text-night-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                       </svg>
-                      <p className="text-gray-500 font-medium">No patients found</p>
+                      <p className="text-slate-400 font-medium">No patients found</p>
                     </td>
                   </tr>
                 ) : (
                   patients.map(p => (
                     <tr key={p.id}>
-                      <td className="font-mono text-xs text-gray-500">{p.id}</td>
-                      <td className="font-medium text-gray-900">{p.name}</td>
-                      <td className="text-gray-700">{p.email || <span className="text-gray-400">—</span>}</td>
-                      <td className="text-gray-700">{p.phone || <span className="text-gray-400">—</span>}</td>
+                      <td className="font-mono text-xs text-slate-400">{p.id}</td>
+                      <td className="font-medium text-white">{p.name}</td>
+                      <td className="text-slate-300">{p.email || <span className="text-slate-500">—</span>}</td>
+                      <td className="text-slate-300">{p.phone || <span className="text-slate-500">—</span>}</td>
                       <td>
                         <Link to={`/patients/${p.id}`} className="link text-sm">
                           View Profile
@@ -180,7 +180,7 @@ export default function Patients() {
                         <td>
                           <button 
                             onClick={() => deletePatient(p.id)} 
-                            className="btn btn-ghost text-red-600 hover:text-red-700 hover:bg-red-50 text-sm p-2"
+                            className="btn btn-ghost text-danger-300 hover:text-danger-200 hover:bg-danger-500/10 text-sm p-2"
                           >
                             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
