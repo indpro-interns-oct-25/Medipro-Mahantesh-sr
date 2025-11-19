@@ -45,7 +45,7 @@ export default function Login({ onLoggedIn }) {
                   </div>
                   <h1 className="text-3xl font-bold text-white">Welcome back</h1>
                 </div>
-                <p className="text-slate-300">Sign in to your account to continue</p>
+                <p className="text-slate-300">in to your account to continue</p>
               </div>
 
               <form onSubmit={submit} className="space-y-5">
@@ -77,7 +77,7 @@ export default function Login({ onLoggedIn }) {
                   </div>
                 )}
                 <button type="submit" className="btn btn-primary w-full text-base py-3">
-                  Sign in
+                  Login
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
