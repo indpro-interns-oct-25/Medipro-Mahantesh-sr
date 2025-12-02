@@ -76,7 +76,7 @@ export default function Login({ onLoggedIn }) {
                     {error}
                   </div>
                 )}
-                <button type="submit" className="btn btn-primary w-full text-base py-3">
+                <button type="submit" className="btn btn-primary w-full text-base bg-sky-500 hover:bg-sky-700">
                   Login
                   <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />

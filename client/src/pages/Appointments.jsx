@@ -37,9 +37,9 @@ export default function Appointments() {
   const [updatingId, setUpdatingId] = useState(null);
   const statusOptions = [
     { value: 'scheduled', label: 'Scheduled' },
-    { value: 'in_progress', label: 'In Progress' },
+    // { value: 'in_progress', label: 'In Progress' },
     { value: 'completed', label: 'Completed' },
-    { value: 'pending', label: 'Pending' },
+    // { value: 'pending', label: 'Pending' },
     { value: 'cancelled', label: 'Cancelled' },
   ];
 
@@ -116,7 +116,7 @@ export default function Appointments() {
       </div>
 
       {/* Create Appointment Form */}
-      {(hasAnyRole('admin', 'receptionist')) && (
+      {(hasAnyRole('receptionist')) && (
         <form onSubmit={add} className="card-elevated p-6 animate-slide-up">
           <h3 className="mb-4 text-lg font-semibold text-white">Schedule New Appointment</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
