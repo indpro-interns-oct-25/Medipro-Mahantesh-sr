@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { query } from '../lib/db.js';
-import { requireAuth } from '../middleware/auth.js';
+import { requireAuth,requireRole} from '../middleware/auth.js';
 
 const router = Router();
 
@@ -17,7 +17,7 @@ router.get('/', requireAuth, async (_req, res) => {
 });
 
 // Create appointment
-router.post('/', requireAuth, async (req, res) => {
+router.post('/', requireAuth, requireRole("doctor","receptionist"), async (req, res) => {
   const { patient_id, doctor_id, date, time, status } = req.body || {};
   if (!patient_id || !date || !time) return res.status(400).json({ error: 'patient_id, date, time required' });
   const { rows } = await query(
